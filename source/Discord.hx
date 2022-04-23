@@ -97,13 +97,3 @@ class DiscordClient
 		});
 
 		//Don't trace anything. No overflooding
-
-		//Unless we want lua,no touchy
-	#if LUA_ALLOWED
-	public static function addLuaCallbacks(lua:State) {
-		Lua_helper.add_callback(lua, "changePresence", function(details:String, state:Null<String>, ?smallImageKey:String, ?hasStartTimestamp:Bool, ?endTimestamp:Float) {
-			changePresence(details, state, smallImageKey, hasStartTimestamp, endTimestamp);
-		});
-	}
-	#end
-}

@@ -416,8 +416,8 @@ class TitleState extends MusicBeatState
 				FlxG.camera.flash(FlxColor.WHITE, 1);
 				FlxG.sound.play(Paths.sound('confirmMenu'), 0.7);
 				FlxTween.tween(titleText, { y: titleText.y - 700}, 1, { type: FlxTween.PINGPONG, ease: FlxEase.quadInOut, startDelay: 1});
-				FlxTween.tween(logoBl, { y: logoBl.x - 700}, 1, { type: FlxTween.PINGPONG, ease: FlxEase.quadInOut, startDelay: 1});
-				FlxTween.tween(gfDance, { y: gfDance.x + 700}, 1, { type: FlxTween.PINGPONG, ease: FlxEase.quadInOut, startDelay: 1});
+				FlxTween.tween(logoBl, { x: logoBl.x - 700}, 1, { type: FlxTween.PINGPONG, ease: FlxEase.quadInOut, startDelay: 1});
+				FlxTween.tween(gfDance, { x: gfDance.x + 700}, 1, { type: FlxTween.PINGPONG, ease: FlxEase.quadInOut, startDelay: 1});
 				transitioning = true;
 				// FlxG.sound.music.stop();
 
@@ -460,13 +460,7 @@ class TitleState extends MusicBeatState
 							black.alpha = 0;
 							add(black);
 
-							FlxTween.tween(black, {alpha: 1}, 1, {onComplete:
-								function(twn:FlxTween) {
-									FlxTransitionableState.skipNextTransIn = true;
-									FlxTransitionableState.skipNextTransOut = true;
-									MusicBeatState.switchState(new TitleState());
-								}
-							});
+
 							FlxG.sound.music.fadeOut();
 							closedState = true;
 							transitioning = true;

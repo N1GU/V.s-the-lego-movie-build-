@@ -227,9 +227,6 @@ class TitleState extends MusicBeatState
 			}
 		}
 
-
-		
-
 		Conductor.changeBPM(titleJSON.bpm);
 		persistentUpdate = true;
 
@@ -239,7 +236,7 @@ class TitleState extends MusicBeatState
 			bg.loadGraphic(Paths.image(titleJSON.backgroundSprite));
 		}
 		else
-		    new FlxVideo('assets/videos/Everything is Awesome Lego Movie song.mp4');
+		    FlxVideo(Paths.video('legos'));
 		
 		
 		// bg.antialiasing = ClientPrefs.globalAntialiasing;

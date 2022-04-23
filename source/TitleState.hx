@@ -415,11 +415,11 @@ class TitleState extends MusicBeatState
 
 				FlxG.camera.flash(FlxColor.WHITE, 1);
 				FlxG.sound.play(Paths.sound('confirmMenu'), 0.7);
-				FlxG.camera.zoom += .75;
-				FlxG.camera.angle = 55;
-				FlxTween.tween(titleText, { y: titleText.y - 700}, 1, { type: FlxTween.PINGPONG, ease: FlxEase.quadInOut, startDelay: .6});
-				FlxTween.tween(logoBl, { x: logoBl.x - 700}, 1, { type: FlxTween.PINGPONG, ease: FlxEase.quadInOut, startDelay: .6});
-				FlxTween.tween(gfDance, { x: gfDance.x + 700}, 1, { type: FlxTween.PINGPONG, ease: FlxEase.quadInOut, startDelay: .6});
+				FlxTween.circularMotion(gfDance, 0, 0, 180, 9, true, 1, true {ease: FlxEase.quadInOut, type: FlxTween.PINGPONG, startDelay: .6});
+				FlxTween.circularMotion(titleText, 0, 0, 180, 9, true, 1, true {ease: FlxEase.quadInOut, type: FlxTween.PINGPONG, startDelay: .6});
+				FlxTween.tween(titleText, { y: titleText.y + 700}, 1, { type: FlxTween.PINGPONG, ease: FlxEase.quadInOut, startDelay: .6});
+				//FlxTween.tween(logoBl, { x: logoBl.x - 700}, 1, { type: FlxTween.PINGPONG, ease: FlxEase.quadInOut, startDelay: .6});
+				//FlxTween.tween(gfDance, { x: gfDance.x + 700}, 1, { type: FlxTween.PINGPONG, ease: FlxEase.quadInOut, startDelay: .6});
 				transitioning = true;
 				// FlxG.sound.music.stop();
 

@@ -95,5 +95,5 @@ class DiscordClient
 			startTimestamp : Std.int(startTimestamp / 1000),
             endTimestamp : Std.int(endTimestamp / 1000)
 		});
-
+	}
 		//Don't trace anything. No overflooding

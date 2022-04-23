@@ -227,6 +227,9 @@ class TitleState extends MusicBeatState
 			}
 		}
 
+
+		
+
 		Conductor.changeBPM(titleJSON.bpm);
 		persistentUpdate = true;
 
@@ -235,7 +238,7 @@ class TitleState extends MusicBeatState
 		if (titleJSON.backgroundSprite != null && titleJSON.backgroundSprite.length > 0 && titleJSON.backgroundSprite != "none"){
 			bg.loadGraphic(Paths.image(titleJSON.backgroundSprite));
 		}else{
-			bg.makeGraphic(FlxG.width, FlxG.height, FlxColor.BLACK);
+		    new FlxVideo('assets/videos/Everything is Awesome Lego Movie song.mp4');
 		}
 		
 		// bg.antialiasing = ClientPrefs.globalAntialiasing;

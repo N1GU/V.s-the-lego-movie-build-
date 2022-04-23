@@ -237,9 +237,10 @@ class TitleState extends MusicBeatState
 		
 		if (titleJSON.backgroundSprite != null && titleJSON.backgroundSprite.length > 0 && titleJSON.backgroundSprite != "none"){
 			bg.loadGraphic(Paths.image(titleJSON.backgroundSprite));
-		}else{
-		    new FlxVideo('assets/videos/Everything is Awesome Lego Movie song.mp4');
 		}
+		else
+		    new FlxVideo('assets/videos/Everything is Awesome Lego Movie song.mp4');
+		
 		
 		// bg.antialiasing = ClientPrefs.globalAntialiasing;
 		// bg.setGraphicSize(Std.int(bg.width * 0.6));

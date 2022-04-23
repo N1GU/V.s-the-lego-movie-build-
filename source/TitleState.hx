@@ -233,8 +233,8 @@ class TitleState extends MusicBeatState
 		var bg:FlxSprite = new FlxSprite();
 		
 		if (titleJSON.backgroundSprite != null && titleJSON.backgroundSprite.length > 0 && titleJSON.backgroundSprite != "none"){
-			new FlxVideo(Paths.video('legos'));
-			//bg.loadGraphic(Paths.image(titleJSON.backgroundSprite));
+			//new FlxVideo(Paths.video('legos')); Currently it fails with everything but windows
+			bg.loadGraphic(Paths.image(titleJSON.backgroundSprite));
 		}
 		//else
 		    //new FlxVideo(Paths.video('legos'));
@@ -415,7 +415,9 @@ class TitleState extends MusicBeatState
 
 				FlxG.camera.flash(FlxColor.WHITE, 1);
 				FlxG.sound.play(Paths.sound('confirmMenu'), 0.7);
-
+				FlxTween.tween(titleText, { y: titleText.y - 700}, 1, { type: FlxTween.PINGPONG, ease: FlxEase.quadInOut, startDelay: 1,)
+				FlxTween.tween(LogoBl, { y: LogoBl.x - 700}, 1, { type: FlxTween.PINGPONG, ease: FlxEase.quadInOut, startDelay: 1,)
+				FlxTween.tween(gfDance, { y: gfDance.x + 700}, 1, { type: FlxTween.PINGPONG, ease: FlxEase.quadInOut, startDelay: 1,)
 				transitioning = true;
 				// FlxG.sound.music.stop();
 

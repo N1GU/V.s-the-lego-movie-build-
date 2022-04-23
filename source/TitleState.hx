@@ -108,9 +108,9 @@ class TitleState extends MusicBeatState
 			{
 				updateVersion = data.split('\n')[0].trim();
 				var curVersion:String = MainMenuState.CurrentVersionOfMod.trim();
-				trace('version online: ' + updateVersion + ', your version: ' + curVersion);
+				trace('Current version online: ' + updateVersion + ', your version: ' + curVersion);
 				if(updateVersion != curVersion) {
-					trace('versions arent matching!');
+					trace('These versions arent matching!');
 					mustUpdate = true;
 				}
 			}

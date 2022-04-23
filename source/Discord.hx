@@ -76,8 +76,8 @@ class DiscordClient
 	}
 
 	public static function changePresence(details:String, state:Null<String>, ?smallImageKey : String, ?hasStartTimestamp : Bool, ?endTimestamp: Float)
-		// This basically updates the presence of the Client to display the current state, details, update the large ImageKey, text, timestamps, etc
 	{
+		// This basically updates the presence of the Client to display the current state, details, update the large ImageKey, text, timestamps, etc
 		var startTimestamp:Float = if(hasStartTimestamp) Date.now().getTime() else 0;
 
 		if (endTimestamp > 0)
@@ -96,4 +96,5 @@ class DiscordClient
             endTimestamp : Std.int(endTimestamp / 1000)
 		});
 	}
+}
 		//Don't trace anything. No overflooding

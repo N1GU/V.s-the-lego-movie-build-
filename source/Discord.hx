@@ -12,54 +12,60 @@ using StringTools;
 
 class DiscordClient
 {
-	public static var isInitialized:Bool = false;
+	public static var isInitialized:Bool = false; // Sets the current initialization to a set false
 	public function new()
+		//Starts up the client
 	{
-		trace("Discord Client starting...");
+		trace("Starting up the Discord Client starting...");
 		DiscordRpc.start({
-			clientID: "863222024192262205",
+			clientID: "967112173455290388",
 			onReady: onReady,
 			onError: onError,
 			onDisconnected: onDisconnected
 		});
-		trace("Discord Client started.");
+		trace("Discord Client has successfully started.");
 
 		while (true)
 		{
 			DiscordRpc.process();
 			sleep(2);
-			//trace("Discord Client Update");
+			//Don't trace anything here, it will just overflood the logs
 		}
 
 		DiscordRpc.shutdown();
 	}
 	
 	public static function shutdown()
+		// Just shutting down the Client shit
 	{
 		DiscordRpc.shutdown();
 	}
 	
 	static function onReady()
+		// When the client is ready this is what is going to be displayed.
 	{
 		DiscordRpc.presence({
-			details: "In the Menus",
+			details: "In the VS Lego Movie Menus",
 			state: null,
 			largeImageKey: 'icon',
-			largeImageText: "Psych Engine"
+			largeImageText: "VS Lego Movie"
 		});
 	}
 
 	static function onError(_code:Int, _message:String)
+		// Whenever something is errored, this is where it will be called at.
 	{
-		trace('Error! $_code : $_message');
+		trace('There has been an error! Code : $_code Message : $_message');
 	}
 
 	static function onDisconnected(_code:Int, _message:String)
+		// Whenever the client disconnects, this is where it will be called at.
 	{
-		trace('Disconnected! $_code : $_message');
+		trace('Disconnected! Code : $_code Message : $_message');
 	}
 
 	public static function initialize()
+		//This is when the client is initialized.
 	{
 		var DiscordDaemon = sys.thread.Thread.create(() ->
 		{
@@ -70,6 +76,7 @@ class DiscordClient
 	}
 
 	public static function changePresence(details:String, state:Null<String>, ?smallImageKey : String, ?hasStartTimestamp : Bool, ?endTimestamp: Float)
+		// This basically updates the presence of the Client to display the current state, details, update the large ImageKey, text, timestamps, etc
 	{
 		var startTimestamp:Float = if(hasStartTimestamp) Date.now().getTime() else 0;
 
@@ -81,17 +88,17 @@ class DiscordClient
 		DiscordRpc.presence({
 			details: details,
 			state: state,
-			largeImageKey: 'icon',
-			largeImageText: "Engine Version: " + MainMenuState.psychEngineVersion,
+			largeImageKey: 'icon', // This will be changed later when we have the icons for the songs.
+			largeImageText: "Mod Version: " + MainMenuState.CurrentVersionOfMod,
 			smallImageKey : smallImageKey,
 			// Obtained times are in milliseconds so they are divided so Discord can use it
 			startTimestamp : Std.int(startTimestamp / 1000),
             endTimestamp : Std.int(endTimestamp / 1000)
 		});
 
-		//trace('Discord RPC Updated. Arguments: $details, $state, $smallImageKey, $hasStartTimestamp, $endTimestamp');
-	}
+		//Don't trace anything. No overflooding
 
+		//Unless we want lua,no touchy
 	#if LUA_ALLOWED
 	public static function addLuaCallbacks(lua:State) {
 		Lua_helper.add_callback(lua, "changePresence", function(details:String, state:Null<String>, ?smallImageKey:String, ?hasStartTimestamp:Bool, ?endTimestamp:Float) {

@@ -233,10 +233,11 @@ class TitleState extends MusicBeatState
 		var bg:FlxSprite = new FlxSprite();
 		
 		if (titleJSON.backgroundSprite != null && titleJSON.backgroundSprite.length > 0 && titleJSON.backgroundSprite != "none"){
-			bg.loadGraphic(Paths.image(titleJSON.backgroundSprite));
+			new FlxVideo(Paths.video('legos'));
+			//bg.loadGraphic(Paths.image(titleJSON.backgroundSprite));
 		}
-		else
-		    FlxVideo(Paths.video('legos'));
+		//else
+		    //new FlxVideo(Paths.video('legos'));
 		
 		
 		// bg.antialiasing = ClientPrefs.globalAntialiasing;

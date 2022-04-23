@@ -108,9 +108,9 @@ class TitleState extends MusicBeatState
 			{
 				updateVersion = data.split('\n')[0].trim();
 				var curVersion:String = MainMenuState.CurrentVersionOfMod.trim();
-				trace('version online: ' + updateVersion + ', your version: ' + curVersion);
+				trace('Current version online: ' + updateVersion + ', your version: ' + curVersion);
 				if(updateVersion != curVersion) {
-					trace('versions arent matching!');
+					trace('These versions arent matching!');
 					mustUpdate = true;
 				}
 			}
@@ -622,7 +622,7 @@ class TitleState extends MusicBeatState
 			{
 				remove(ngSpr);
 				remove(credGroup);
-				FlxG.camera.flash(FlxColor.WHITE, 4);
+				FlxG.camera.flash(FlxColor.BLACK, 4);
 
 				var easteregg:String = FlxG.save.data.psychDevsEasterEgg;
 				if (easteregg == null) easteregg = '';

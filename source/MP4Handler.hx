@@ -102,10 +102,10 @@ class MP4Handler
 
 	public function onVLCComplete()
 	{
+		FlxG.camera.fade(flixel.util.FlxColor.BLACK, 2.0);
 		bitmap.stop();
 
 		// Clean player, just in case! Actually no.
-
 
 		trace("OH oh..! ASOUME");
 

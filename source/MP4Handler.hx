@@ -107,7 +107,7 @@ class MP4Handler
 
 		// Clean player, just in case! Actually no.
 
-		trace("OH oh..! ASOUME");
+		trace("Video Stopped, initalizing clean up and switch...");
 
 		new FlxTimer().start(0.3, function(tmr:FlxTimer)
 		{

@@ -16,7 +16,7 @@ class DiscordClient
 	public function new()
 		//Starts up the client
 	{
-		trace("Starting up the Discord Client starting...");
+		trace("Starting up the Discord Client...");
 		DiscordRpc.start({
 			clientID: "967112173455290388",
 			onReady: onReady,

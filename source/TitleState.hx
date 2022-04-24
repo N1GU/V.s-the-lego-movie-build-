@@ -222,13 +222,13 @@ class TitleState extends MusicBeatState
 			// music.play();
 
 			if(FlxG.sound.music == null) {
-				FlxG.sound.playMusic(Paths.music('EVERYTHINGISCOOLWHENYOURAPARTOFATEAM'));
+				FlxG.sound.playMusic(Paths.music('everything_is_awesome'), 0.8);
 
-				FlxG.sound.music.fadeIn(4, 0, 0.7);
+				FlxG.sound.music.fadeIn(1, 0, 0.78);
 			}
 		}
 	
-		Conductor.changeBPM(titleJSON.bpm);
+		Conductor.changeBPM(130);
 		persistentUpdate = true;
 
 		var bg:FlxSprite = new FlxSprite();
@@ -237,8 +237,12 @@ class TitleState extends MusicBeatState
 			//new FlxVideo(Paths.video('legos')); Currently it fails with everything but windows
 			bg.loadGraphic(Paths.image(titleJSON.backgroundSprite));
 
+
 		}else{
 			bg.makeGraphic(FlxG.width, FlxG.height, FlxColor.BLACK);
+
+		//}else{
+
 		}
 		//else
 		    //new FlxVideo(Paths.video('legos'));
@@ -247,6 +251,11 @@ class TitleState extends MusicBeatState
 		// bg.antialiasing = ClientPrefs.globalAntialiasing;
 		// bg.setGraphicSize(Std.int(bg.width * 0.6));
 		// bg.updateHitbox();
+		var bg:FlxSprite = new FlxSprite(-80).loadGraphic(Paths.image('bg1'));
+		bg.setGraphicSize(Std.int(bg.width * 1.2));
+		bg.updateHitbox();
+		bg.screenCenter();
+		bg.antialiasing = ClientPrefs.globalAntialiasing;
 		add(bg);
 
 		logoBl = new FlxSprite(titleJSON.titlex, titleJSON.titley);
@@ -415,6 +424,12 @@ class TitleState extends MusicBeatState
 		{
 			if(pressedEnter)
 			{
+				FlxTween.tween(titleText, { y: titleText.y + 700, x: titleText.x + 700}, 1, { type: FlxTween.PINGPONG, ease: FlxEase.quadInOut});
+				FlxTween.tween(logoBl, { x: logoBl.x - 700}, 1, { type: FlxTween.PINGPONG, ease: FlxEase.quadInOut});
+				FlxTween.tween(FlxG.camera, {x:2000}, 3.4, {ease: FlxEase.expoInOut});
+				FlxTween.tween(gfDance, {y:2000}, 3.4, {ease: FlxEase.expoInOut});
+				FlxTween.tween(gfDance, {angle:180}, 3.8, {ease: FlxEase.expoInOut});
+				//FlxTween.tween(FlxG.camera, {y: -1000}, 1.5, {ease: FlxEase.quadInOut, onComplete: function(twn:FlxTween) 
 				if(titleText != null) titleText.animation.play('press');
 
 				FlxG.camera.flash(FlxColor.WHITE, 1);
@@ -422,6 +437,8 @@ class TitleState extends MusicBeatState
 				FlxTween.tween(FlxG.camera, {y: -1000}, 1.5, {ease: FlxEase.quadInOut, onComplete: function(twn:FlxTween) 
 					{
 					}});
+
+				camera.fade(flixel.util.FlxColor.BLACK, 2.0);
 
 				transitioning = true;
 				// FlxG.sound.music.stop();
@@ -546,18 +563,16 @@ class TitleState extends MusicBeatState
 			{
 				case 1:
 					#if PSYCH_WATERMARKS
-					createCoolText(['A very epic mod by'], 15);
 					#else
-					createCoolText(['ninjamuffin99', 'phantomArcade', 'kawaisprite', 'evilsk8er']);
+					createCoolText(['A very epic mod by'], 15);
 					#end
 				// credTextShit.visible = true;
 				case 3:
 					#if PSYCH_WATERMARKS
+					#else
 					addMoreText('RealMushy', 15);
 					addMoreText('Jackstar09', 15);
 					addMoreText('and others!', 15);
-					#else
-					addMoreText('present');
 					#end
 				// credTextShit.text += '\npresent...';
 				// credTextShit.addText();
@@ -570,7 +585,7 @@ class TitleState extends MusicBeatState
 					#if PSYCH_WATERMARKS
 					createCoolText(['We dont associate', 'with these fuckers'], -40);
 					#else
-					createCoolText(['In association', 'with'], -40);
+					createCoolText(['We dont associate', 'with these fuckers'], -40);
 					#end
 				case 7:
 					addMoreText('newgrounds', -40);
@@ -595,15 +610,50 @@ class TitleState extends MusicBeatState
 				// credTextShit.text = "Friday";
 				// credTextShit.screenCenter();
 				case 13:
+					addMoreText('i dont know', -40);
+				case 14:
+					deleteCoolText();
+					createCoolText(['i dont know what else to add']);
+				case 15:
+					deleteCoolText();
+					createCoolText(['LMAO']);
+				case 16:
+					deleteCoolText();
+					createCoolText(['Enjoy the mod']);
+				case 17:
+					deleteCoolText();
+					createCoolText(['Or I will stab you']);
+				case 18:
 					addMoreText('VS');
 				// credTextShit.visible = true;
-				case 14:
+				case 19:
 					addMoreText('Lego');
 				// credTextShit.text += '\nNight';
-				case 15:
+				case 20:
 					addMoreText('Movie'); // credTextShit.text += '\nFunkin';
-
-				case 16:
+				case 21:
+					deleteCoolText();
+				case 22:
+					createCoolText(['wait for this epic drop lol']);
+				case 23:
+					deleteCoolText();
+				case 24:
+					createCoolText(['4']);
+				case 25:
+					deleteCoolText();
+				case 26:
+					createCoolText(['3']);
+				case 27:
+					deleteCoolText();
+				case 28:
+					createCoolText(['2']);
+				case 29:
+					deleteCoolText();
+				case 30:
+					createCoolText(['LESSSSSSSSSSSS GO']);
+				case 31:
+					deleteCoolText();
+				case 32:
 					skipIntro();
 			}
 		}
@@ -618,7 +668,7 @@ class TitleState extends MusicBeatState
 			{
 				remove(ngSpr);
 				remove(credGroup);
-				FlxG.camera.flash(FlxColor.BLACK, 4);
+				FlxG.camera.flash(FlxColor.WHITE, 4);
 
 				var easteregg:String = FlxG.save.data.psychDevsEasterEgg;
 				if (easteregg == null) easteregg = '';

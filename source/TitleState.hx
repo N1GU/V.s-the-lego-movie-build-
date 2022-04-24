@@ -239,7 +239,7 @@ class TitleState extends MusicBeatState
 
 		//}else{
 		   // new FlxVideo('assets/videos/legos.mp4', true);
-		//}
+		}
 		//else
 		    //new FlxVideo(Paths.video('legos'));
 		
@@ -379,8 +379,9 @@ class TitleState extends MusicBeatState
 
 		return swagGoodArray;
 	}
-}
+
 	var transitioning:Bool = false;
+	private static var playJingle:Bool = false;
 
 	override function update(elapsed:Float)
 	{
@@ -429,7 +430,8 @@ class TitleState extends MusicBeatState
 				FlxTween.tween(gfDance, {y:2000}, 3.4, {ease: FlxEase.expoInOut});
 				FlxTween.tween(gfDance, {angle:180}, 3.8, {ease: FlxEase.expoInOut});
 				//FlxTween.tween(FlxG.camera, {y: -1000}, 1.5, {ease: FlxEase.quadInOut, onComplete: function(twn:FlxTween) 
-				};
+					{
+					}});
 				FlxG.camera.fade();
 
 				transitioning = true;
@@ -446,6 +448,43 @@ class TitleState extends MusicBeatState
 				});
 				// FlxG.sound.play(Paths.music('titleShoot'), 0.7);
 			}
+			#if TITLE_SCREEN_EASTER_EGG
+			else if (FlxG.keys.firstJustPressed() != FlxKey.NONE)
+			{
+				var keyPressed:FlxKey = FlxG.keys.firstJustPressed();
+				var keyName:String = Std.string(keyPressed);
+				if(allowedKeys.contains(keyName)) {
+					easterEggKeysBuffer += keyName;
+					if(easterEggKeysBuffer.length >= 32) easterEggKeysBuffer = easterEggKeysBuffer.substring(1);
+					//trace('Test! Allowed Key pressed!!! Buffer: ' + easterEggKeysBuffer);
+
+					for (wordRaw in easterEggKeys)
+					{
+						var word:String = wordRaw.toUpperCase(); //just for being sure you're doing it right
+						if (easterEggKeysBuffer.contains(word))
+						{
+							//trace('YOOO! ' + word);
+							if (FlxG.save.data.psychDevsEasterEgg == word)
+								FlxG.save.data.psychDevsEasterEgg = '';
+							else
+								FlxG.save.data.psychDevsEasterEgg = word;
+							FlxG.save.flush();
+
+							FlxG.sound.play(Paths.sound('ToggleJingle'));
+
+							camera.fade(flixel.util.FlxColor.BLACK, 2.0);
+							FlxG.sound.music.fadeOut();
+							closedState = true;
+							transitioning = true;
+							playJingle = true;
+							easterEggKeysBuffer = '';
+							break;
+						}
+					}
+				}
+			}
+			#end
+		}
 
 		if (initialized && pressedEnter && !skippedIntro)
 		{

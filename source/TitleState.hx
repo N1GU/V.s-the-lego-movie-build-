@@ -237,9 +237,9 @@ class TitleState extends MusicBeatState
 			//new FlxVideo(Paths.video('legos')); Currently it fails with everything but windows
 			bg.loadGraphic(Paths.image(titleJSON.backgroundSprite));
 
-		}else{
-		    new FlxVideo('assets/videos/legos.mp4', true);
-		}
+		//}else{
+		   // new FlxVideo('assets/videos/legos.mp4', true);
+		//}
 		//else
 		    //new FlxVideo(Paths.video('legos'));
 		
@@ -253,7 +253,7 @@ class TitleState extends MusicBeatState
 		bg.screenCenter();
 		bg.antialiasing = ClientPrefs.globalAntialiasing;
 		add(bg);
-		
+
 		logoBl = new FlxSprite(titleJSON.titlex, titleJSON.titley);
 		logoBl.frames = Paths.getSparrowAtlas('logoBumpin');
 		

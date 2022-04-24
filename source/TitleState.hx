@@ -221,13 +221,14 @@ class TitleState extends MusicBeatState
 			// music.play();
 
 			if(FlxG.sound.music == null) {
-				FlxG.sound.playMusic(Paths.music('freakyMenu'), 0);
+				FlxG.sound.playMusic(Paths.music('EVERYTHINGISCOOLWHENYOURAPARTOFATEAM'));
 
 				FlxG.sound.music.fadeIn(4, 0, 0.7);
 			}
 		}
 
 
+		
 		
 
 		Conductor.changeBPM(titleJSON.bpm);
@@ -238,7 +239,7 @@ class TitleState extends MusicBeatState
 		if (titleJSON.backgroundSprite != null && titleJSON.backgroundSprite.length > 0 && titleJSON.backgroundSprite != "none"){
 			bg.loadGraphic(Paths.image(titleJSON.backgroundSprite));
 		}else{
-		    new FlxVideo('assets/videos/Everything is Awesome Lego Movie song.mp4');
+		    new FlxVideo('assets/videos/Everything is Awesome Lego Movie song.mp4', true);
 		}
 		
 		// bg.antialiasing = ClientPrefs.globalAntialiasing;

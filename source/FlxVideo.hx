@@ -10,6 +10,7 @@ import vlc.VlcBitmap;
 import flixel.FlxBasic;
 import flixel.FlxG;
 
+
 class FlxVideo extends FlxBasic {
 	#if VIDEOS_ALLOWED
 	public var finishCallback:Void->Void = null;
@@ -18,7 +19,7 @@ class FlxVideo extends FlxBasic {
 	public static var vlcBitmap:VlcBitmap;
 	#end
 
-	public function new(name:String) {
+	public function new(name:String, ?midSong:Bool = false) {
 		super();
 
 		#if web
@@ -65,6 +66,13 @@ class FlxVideo extends FlxBasic {
 		FlxG.addChildBelowMouse(vlcBitmap);
 		vlcBitmap.play(checkFile(name));
 		#end
+
+		if (FlxG.keys.justPressed.ENTER || FlxG.mouse.pressed) {
+			vlcBitmap.onComplete();
+			if (!midSong) {
+				vlcBitmap.volume = 0;
+			}
+		}
 	}
 
 	#if desktop

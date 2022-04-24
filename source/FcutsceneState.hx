@@ -40,11 +40,7 @@ import vlc.VlcBitmap;
 class FcutsceneState extends MusicBeatState {
     override function create() {
         var vid = new MP4Handler();
-        vid.playMP4(Paths.video('legosFtheHaters'), false, null, false, false, false);
-        if (vid.bitmap.onStop != null) {
-            LoadingState.loadAndSwitchState(new TitleState(), false);
-        }
-
+        vid.playMP4(Paths.video('legosFtheHaters'), false, null, new TitleState(), false, false, false);    
         
     }
 }

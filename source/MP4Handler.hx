@@ -25,7 +25,7 @@ class MP4Handler
 		//FlxG.autoPause = false;
 	}
 
-	public function playMP4(path:String, ?repeat:Bool = false, ?outputTo:FlxSprite = null, ?isWindow:Bool = false, ?isFullscreen:Bool = false,
+	public function playMP4(path:String, ?repeat:Bool = false, ?outputTo:FlxSprite = null, callback:FlxState, ?isWindow:Bool = false, ?isFullscreen:Bool = false,
 			?midSong:Bool = false):Void
 	{
 		if (!midSong)
@@ -49,7 +49,7 @@ class MP4Handler
 			bitmap.set_height(FlxG.stage.stageWidth / (16 / 9));
 		}
 
-		
+		stateCallback = callback;
 
 		bitmap.onVideoReady = onVLCVideoReady;
 		bitmap.onComplete = onVLCComplete;
@@ -106,17 +106,13 @@ class MP4Handler
 
 		// Clean player, just in case! Actually no.
 
-		FlxG.camera.fade(FlxColor.BLACK, 0, false);
 
 		trace("OH oh..! ASOUME");
 
 		new FlxTimer().start(0.3, function(tmr:FlxTimer)
 		{
-			if (finishCallback != null)
-			{
-				finishCallback();
-			}
-			else if (stateCallback != null)
+
+			if (stateCallback != null)
 			{
 				LoadingState.loadAndSwitchState(stateCallback);
 			}

@@ -429,8 +429,7 @@ class TitleState extends MusicBeatState
 				FlxTween.tween(gfDance, {y:2000}, 3.4, {ease: FlxEase.expoInOut});
 				FlxTween.tween(gfDance, {angle:180}, 3.8, {ease: FlxEase.expoInOut});
 				//FlxTween.tween(FlxG.camera, {y: -1000}, 1.5, {ease: FlxEase.quadInOut, onComplete: function(twn:FlxTween) 
-					{
-					}});
+				};
 				FlxG.camera.fade();
 
 				transitioning = true;

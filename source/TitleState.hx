@@ -222,13 +222,13 @@ class TitleState extends MusicBeatState
 			// music.play();
 
 			if(FlxG.sound.music == null) {
-				FlxG.sound.playMusic(Paths.music('EVERYTHINGISCOOLWHENYOURAPARTOFATEAM'));
+				FlxG.sound.playMusic(Paths.music('everything_is_awesome'), 0.8);
 
-				FlxG.sound.music.fadeIn(4, 0, 0.7);
+				FlxG.sound.music.fadeIn(1, 0, 0.78);
 			}
 		}
 	
-		Conductor.changeBPM(titleJSON.bpm);
+		Conductor.changeBPM(130);
 		persistentUpdate = true;
 
 		var bg:FlxSprite = new FlxSprite();
@@ -578,7 +578,7 @@ class TitleState extends MusicBeatState
 					#if PSYCH_WATERMARKS
 					createCoolText(['We dont associate', 'with these fuckers'], -40);
 					#else
-					createCoolText(['In association', 'with'], -40);
+					createCoolText(['We dont associate', 'with these fuckers'], -40);
 					#end
 				case 7:
 					addMoreText('newgrounds', -40);
@@ -603,15 +603,50 @@ class TitleState extends MusicBeatState
 				// credTextShit.text = "Friday";
 				// credTextShit.screenCenter();
 				case 13:
+					addMoreText('i dont know', -40);
+				case 14:
+					deleteCoolText();
+					createCoolText(['i dont know what else to add']);
+				case 15:
+					deleteCoolText();
+					createCoolText(['LMAO']);
+				case 16:
+					deleteCoolText();
+					createCoolText(['Enjoy the mod']);
+				case 17:
+					deleteCoolText();
+					createCoolText(['Or I will stab you']);
+				case 18:
 					addMoreText('VS');
 				// credTextShit.visible = true;
-				case 14:
+				case 19:
 					addMoreText('Lego');
 				// credTextShit.text += '\nNight';
-				case 15:
+				case 20:
 					addMoreText('Movie'); // credTextShit.text += '\nFunkin';
-
-				case 16:
+				case 21:
+					deleteCoolText();
+				case 22:
+					createCoolText(['wait for this epic drop lol']);
+				case 23:
+					deleteCoolText();
+				case 24:
+					createCoolText(['4']);
+				case 25:
+					deleteCoolText();
+				case 26:
+					createCoolText(['3']);
+				case 27:
+					deleteCoolText();
+				case 28:
+					createCoolText(['2']);
+				case 29:
+					deleteCoolText();
+				case 30:
+					createCoolText(['LESSSSSSSSSSSS GO']);
+				case 31:
+					deleteCoolText();
+				case 32:
 					skipIntro();
 			}
 		}
@@ -626,7 +661,7 @@ class TitleState extends MusicBeatState
 			{
 				remove(ngSpr);
 				remove(credGroup);
-				FlxG.camera.flash(FlxColor.BLACK, 4);
+				FlxG.camera.flash(FlxColor.WHITE, 4);
 
 				var easteregg:String = FlxG.save.data.psychDevsEasterEgg;
 				if (easteregg == null) easteregg = '';

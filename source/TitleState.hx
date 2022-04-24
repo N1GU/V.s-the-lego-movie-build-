@@ -420,19 +420,18 @@ class TitleState extends MusicBeatState
 		{
 			if(pressedEnter)
 			{
-				if(titleText != null) titleText.animation.play('press');
-
-				FlxG.camera.flash(FlxColor.WHITE, 1);
-				FlxG.sound.play(Paths.sound('confirmMenu'), 0.7);
 				FlxTween.tween(titleText, { y: titleText.y + 700, x: titleText.x + 700}, 1, { type: FlxTween.PINGPONG, ease: FlxEase.quadInOut});
 				FlxTween.tween(logoBl, { x: logoBl.x - 700}, 1, { type: FlxTween.PINGPONG, ease: FlxEase.quadInOut});
 				FlxTween.tween(FlxG.camera, {x:2000}, 3.4, {ease: FlxEase.expoInOut});
 				FlxTween.tween(gfDance, {y:2000}, 3.4, {ease: FlxEase.expoInOut});
 				FlxTween.tween(gfDance, {angle:180}, 3.8, {ease: FlxEase.expoInOut});
 				//FlxTween.tween(FlxG.camera, {y: -1000}, 1.5, {ease: FlxEase.quadInOut, onComplete: function(twn:FlxTween) 
-					
-			});
-				FlxG.camera.fade();
+				if(titleText != null) titleText.animation.play('press');
+
+				FlxG.camera.flash(FlxColor.WHITE, 1);
+				FlxG.sound.play(Paths.sound('confirmMenu'), 0.7);
+
+				camera.fade(flixel.util.FlxColor.BLACK, 2.0);
 
 				transitioning = true;
 				// FlxG.sound.music.stop();

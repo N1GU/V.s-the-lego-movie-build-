@@ -417,7 +417,9 @@ class TitleState extends MusicBeatState
 
 				FlxG.camera.flash(FlxColor.WHITE, 1);
 				FlxG.sound.play(Paths.sound('confirmMenu'), 0.7);
-
+				FlxTween.tween(titleText, { y: titleText.y + 700, x: titleText.x + 700}, 1, { type: FlxTween.PINGPONG, ease: FlxEase.quadInOut});
+				FlxTween.tween(logoBl, { x: logoBl.x - 700}, 1, { type: FlxTween.PINGPONG, ease: FlxEase.quadInOut});
+				FlxTween.tween(gfDance, { x: gfDance.x + 700 }, 1, { type: FlxTween.PINGPONG, ease: FlxEase.quadInOut});
 				transitioning = true;
 				// FlxG.sound.music.stop();
 

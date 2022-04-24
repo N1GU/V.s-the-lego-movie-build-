@@ -1,3 +1,4 @@
+import flixel.tweens.FlxEase;
 #if web
 import openfl.net.NetConnection;
 import openfl.net.NetStream;
@@ -9,7 +10,7 @@ import vlc.VlcBitmap;
 #end
 import flixel.FlxBasic;
 import flixel.FlxG;
-
+import flixel.tweens.FlxTween;
 
 class FlxVideo extends FlxBasic {
 	#if VIDEOS_ALLOWED
@@ -56,7 +57,8 @@ class FlxVideo extends FlxBasic {
 
 		vlcBitmap.onComplete = onVLCComplete;
 		vlcBitmap.onError = onVLCError;
-
+		FlxG.camera.y = 0;
+		
 		FlxG.stage.addEventListener(Event.ENTER_FRAME, fixVolume);
 		vlcBitmap.repeat = 0;
 		vlcBitmap.inWindow = false;
@@ -71,6 +73,8 @@ class FlxVideo extends FlxBasic {
 			vlcBitmap.onComplete();
 			if (!midSong) {
 				vlcBitmap.volume = 0;
+				FlxG.camera.y = 0;
+
 			}
 		}
 	}

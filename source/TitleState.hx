@@ -247,8 +247,13 @@ class TitleState extends MusicBeatState
 		// bg.antialiasing = ClientPrefs.globalAntialiasing;
 		// bg.setGraphicSize(Std.int(bg.width * 0.6));
 		// bg.updateHitbox();
+		var bg:FlxSprite = new FlxSprite(-80).loadGraphic(Paths.image('bg1'));
+		bg.setGraphicSize(Std.int(bg.width * 1.2));
+		bg.updateHitbox();
+		bg.screenCenter();
+		bg.antialiasing = ClientPrefs.globalAntialiasing;
 		add(bg);
-
+		
 		logoBl = new FlxSprite(titleJSON.titlex, titleJSON.titley);
 		logoBl.frames = Paths.getSparrowAtlas('logoBumpin');
 		
@@ -419,7 +424,12 @@ class TitleState extends MusicBeatState
 
 				FlxG.camera.flash(FlxColor.WHITE, 1);
 				FlxG.sound.play(Paths.sound('confirmMenu'), 0.7);
-				FlxTween.tween(FlxG.camera, {y: -1000}, 1.5, {ease: FlxEase.quadInOut, onComplete: function(twn:FlxTween) 
+				FlxTween.tween(titleText, { y: titleText.y + 700, x: titleText.x + 700}, 1, { type: FlxTween.PINGPONG, ease: FlxEase.quadInOut});
+				FlxTween.tween(logoBl, { x: logoBl.x - 700}, 1, { type: FlxTween.PINGPONG, ease: FlxEase.quadInOut});
+				FlxTween.tween(FlxG.camera, {x:2000}, 3.4, {ease: FlxEase.expoInOut});
+				FlxTween.tween(gfDance, {y:2000}, 3.4, {ease: FlxEase.expoInOut});
+				FlxTween.tween(gfDance, {angle:180}, 3.8, {ease: FlxEase.expoInOut});
+				//FlxTween.tween(FlxG.camera, {y: -1000}, 1.5, {ease: FlxEase.quadInOut, onComplete: function(twn:FlxTween) 
 					{
 					}});
 				FlxG.camera.fade();
@@ -547,18 +557,16 @@ class TitleState extends MusicBeatState
 			{
 				case 1:
 					#if PSYCH_WATERMARKS
-					createCoolText(['A very epic mod by'], 15);
 					#else
-					createCoolText(['ninjamuffin99', 'phantomArcade', 'kawaisprite', 'evilsk8er']);
+					createCoolText(['A very epic mod by'], 15);
 					#end
 				// credTextShit.visible = true;
 				case 3:
 					#if PSYCH_WATERMARKS
+					#else
 					addMoreText('RealMushy', 15);
 					addMoreText('Jackstar09', 15);
 					addMoreText('and others!', 15);
-					#else
-					addMoreText('present');
 					#end
 				// credTextShit.text += '\npresent...';
 				// credTextShit.addText();

@@ -379,7 +379,7 @@ class TitleState extends MusicBeatState
 
 		return swagGoodArray;
 	}
-
+}
 	var transitioning:Bool = false;
 
 	override function update(elapsed:Float)

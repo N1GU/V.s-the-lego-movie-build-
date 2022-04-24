@@ -36,6 +36,7 @@ import flixel.util.FlxTimer;
 import lime.app.Application;
 import openfl.Assets;
 
+
 using StringTools;
 typedef TitleData =
 {
@@ -421,6 +422,7 @@ class TitleState extends MusicBeatState
 				FlxTween.tween(FlxG.camera, {y: -1000}, 1.5, {ease: FlxEase.quadInOut, onComplete: function(twn:FlxTween) 
 					{
 					}});
+				FlxG.camera.fade();
 
 				transitioning = true;
 				// FlxG.sound.music.stop();

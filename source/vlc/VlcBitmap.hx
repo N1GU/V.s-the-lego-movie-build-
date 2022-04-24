@@ -50,7 +50,7 @@ class VlcBitmap extends Bitmap
 
 	public var onVideoReady:Void->Void;
 	public var onPlay:Void->Void;
-	public var onStop:Void->Void;
+	public var onStop:Void->Bool;
 	public var onPause:Void->Void;
 	public var onResume:Void->Void;
 	public var onSeek:Void->Void;
@@ -156,7 +156,7 @@ class VlcBitmap extends Bitmap
 		// dispose();
 
 		if (onStop != null)
-			onStop();
+			libvlc.stop();
 		#end
 	}
 
@@ -454,7 +454,7 @@ class VlcBitmap extends Bitmap
 			isPlaying = false;
 
 		if (onStop != null)
-			onStop();
+			libvlc.stop();
 	}
 
 	function statusOnEndReached()
@@ -510,7 +510,7 @@ class VlcBitmap extends Bitmap
 	private override function get_width():Float
 	{
 		return _width;
-	}
+	}/*********************************************************************************************************************************************************************************************************************/
 
 	public override function set_width(value:Float):Float
 	{

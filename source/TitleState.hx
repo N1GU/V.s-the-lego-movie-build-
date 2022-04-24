@@ -238,7 +238,7 @@ class TitleState extends MusicBeatState
 			bg.loadGraphic(Paths.image(titleJSON.backgroundSprite));
 
 		}else{
-		    new FlxVideo('assets/videos/legos.mp4', true);
+			bg.makeGraphic(FlxG.width, FlxG.height, FlxColor.BLACK);
 		}
 		//else
 		    //new FlxVideo(Paths.video('legos'));
@@ -422,7 +422,6 @@ class TitleState extends MusicBeatState
 				FlxTween.tween(FlxG.camera, {y: -1000}, 1.5, {ease: FlxEase.quadInOut, onComplete: function(twn:FlxTween) 
 					{
 					}});
-				FlxG.camera.fade();
 
 				transitioning = true;
 				// FlxG.sound.music.stop();

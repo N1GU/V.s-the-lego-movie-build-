@@ -8,8 +8,9 @@ import flixel.util.FlxTimer;
 import openfl.events.Event;
 import vlc.VlcBitmap;
 
-// THIS IS FOR TESTING
-// DONT STEAL MY CODE >:(
+// THIS IS FOR TESTING, DONT STEAL MY CODE >:( - crybit
+// 
+// - soooooooooooooooooooooooooooooooooooooooorry -elad levi, AKA: N1GU/ez
 class MP4Handler
 {
 	public var finishCallback:Void->Void;
@@ -107,7 +108,7 @@ class MP4Handler
 
 		FlxG.camera.fade(FlxColor.BLACK, 0, false);
 
-		trace("Big, Big Chungus, Big Chungus!");
+		trace("OH oh..! ASOUME");
 
 		new FlxTimer().start(0.3, function(tmr:FlxTimer)
 		{
@@ -128,9 +129,7 @@ class MP4Handler
 			}
 		});
 	}
-
-	public function kill()
-	{
+	public function kill() {
 		bitmap.stop();
 
 		if (finishCallback != null)

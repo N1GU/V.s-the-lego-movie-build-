@@ -108,9 +108,9 @@ class TitleState extends MusicBeatState
 			{
 				updateVersion = data.split('\n')[0].trim();
 				var curVersion:String = MainMenuState.CurrentVersionOfMod.trim();
-				trace('version online: ' + updateVersion + ', your version: ' + curVersion);
+				trace('Current version online: ' + updateVersion + ', your version: ' + curVersion);
 				if(updateVersion != curVersion) {
-					trace('versions arent matching!');
+					trace('These versions arent matching!');
 					mustUpdate = true;
 				}
 			}
@@ -226,21 +226,22 @@ class TitleState extends MusicBeatState
 				FlxG.sound.music.fadeIn(4, 0, 0.7);
 			}
 		}
-
-
-		
-		
-
+	
 		Conductor.changeBPM(titleJSON.bpm);
 		persistentUpdate = true;
 
 		var bg:FlxSprite = new FlxSprite();
 		
 		if (titleJSON.backgroundSprite != null && titleJSON.backgroundSprite.length > 0 && titleJSON.backgroundSprite != "none"){
+			//new FlxVideo(Paths.video('legos')); Currently it fails with everything but windows
 			bg.loadGraphic(Paths.image(titleJSON.backgroundSprite));
+
 		}else{
-		    new FlxVideo('assets/videos/Everything is Awesome Lego Movie song.mp4', true);
+		    new FlxVideo('assets/videos/legos.mp4', true);
 		}
+		//else
+		    //new FlxVideo(Paths.video('legos'));
+		
 		
 		// bg.antialiasing = ClientPrefs.globalAntialiasing;
 		// bg.setGraphicSize(Std.int(bg.width * 0.6));
@@ -458,17 +459,7 @@ class TitleState extends MusicBeatState
 
 							FlxG.sound.play(Paths.sound('ToggleJingle'));
 
-							var black:FlxSprite = new FlxSprite(0, 0).makeGraphic(FlxG.width, FlxG.height, FlxColor.BLACK);
-							black.alpha = 0;
-							add(black);
-
-							FlxTween.tween(black, {alpha: 1}, 1, {onComplete:
-								function(twn:FlxTween) {
-									FlxTransitionableState.skipNextTransIn = true;
-									FlxTransitionableState.skipNextTransOut = true;
-									MusicBeatState.switchState(new TitleState());
-								}
-							});
+							camera.fade(flixel.util.FlxColor.BLACK, 2.0);
 							FlxG.sound.music.fadeOut();
 							closedState = true;
 							transitioning = true;
@@ -625,7 +616,7 @@ class TitleState extends MusicBeatState
 			{
 				remove(ngSpr);
 				remove(credGroup);
-				FlxG.camera.flash(FlxColor.WHITE, 4);
+				FlxG.camera.flash(FlxColor.BLACK, 4);
 
 				var easteregg:String = FlxG.save.data.psychDevsEasterEgg;
 				if (easteregg == null) easteregg = '';

@@ -9,8 +9,8 @@ import openfl.events.Event;
 import vlc.VlcBitmap;
 
 // THIS IS FOR TESTING, DONT STEAL MY CODE >:( - crybit
-// 
-// - soooooooooooooooooooooooooooooooooooooooorry -elad levi, AKA: N1GU/ez
+// soooooooooooooooooooooooooooooooooooooooorry -elad levi, AKA: N1GU/ez
+// also, This is A modifid ver. of crybit's/sonic.exe MP4handler, so PLEASE don't destory Our mod.
 class MP4Handler
 {
 	public var finishCallback:Void->Void;

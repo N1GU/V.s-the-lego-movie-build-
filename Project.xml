@@ -2,11 +2,10 @@
 <project>
 	<!-- _________________________ Application Settings _________________________ -->
 
-	<app title="Friday Night Funkin': VS Lego Movie" file="VSLego" packageName="com.ai-ohto.xyz" package="com.ai-ohto.xyz" main="Main" version="0.0.1" company="Aaron R" />
+	<app title="Friday Night Funkin': VS Lego Movie" file="VSLego" packageName="com.ai-ohto.xyz" package="com.ai-ohto.xyz" main="Main" version="0.0.3" company="Aaron R" />
 
 	<!--Switch Export with Unique ApplicationID and Icon-->
-	<set name="APP_ID" value="0x0100f6c013bbc000" />
-
+	<set name="APP_ID" value="0x056535f4c65676f5f4d6f766965" />
 	<!-- NOTE TO SELF: DISABLE THIS IF ISSUES ARE FOUND -->
 	<haxedef name="LINC_LUA_RELATIVE_DYNAMIC_LIB"/> <!-- stable luas PUT AFTER FIRST LINE WITH APP NAME AND ETC -->
 
@@ -103,7 +102,6 @@
 	<assets path="assets/week6"         library="week6"         exclude="*.ogg" if="web"/>
 	<assets path="assets/week6"         library="week6"         exclude="*.mp3" unless="web"/>
 	
-	<assets path='example_mods' rename='mods' embed='false' if="MODS_ALLOWED"/>
 	<assets path='art/readme.txt' rename='do NOT readme.txt' />
 	<!-- <template path='mods' /> -->
 	

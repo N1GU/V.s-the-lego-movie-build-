@@ -74,8 +74,20 @@ class MainMenuState extends MusicBeatState
 		bg.setGraphicSize(Std.int(bg.width * 1.175));
 		bg.updateHitbox();
 		bg.screenCenter();
+		bg.x = 1000;
 		bg.antialiasing = ClientPrefs.globalAntialiasing;
 		add(bg);
+		FlxTween.tween(bg, {x: bg.x - 1000}, 1, {ease: FlxEase.quadInOut});
+
+		var bgborder:FlxSprite = new FlxSprite(-80).loadGraphic(Paths.image('menuBGborder'));
+		bgborder.scrollFactor.set(0, yScroll);
+		bgborder.updateHitbox();
+		bgborder.screenCenter();
+		bgborder.x = 1000;
+		bgborder.antialiasing = ClientPrefs.globalAntialiasing;
+		add(bgborder);
+		FlxTween.tween(bgborder, {x: bgborder.x - 1000}, 1.5, {ease: FlxEase.quadInOut});
+
 
 		camFollow = new FlxObject(0, 0, 1, 1);
 		camFollowPos = new FlxObject(0, 0, 1, 1);
@@ -97,7 +109,7 @@ class MainMenuState extends MusicBeatState
 		menuItems = new FlxTypedGroup<FlxSprite>();
 		add(menuItems);
 
-		var scale:Float = 1;
+		var scale:Float = 0.4;
 		/*if(optionShit.length > 6) {
 			scale = 6 / optionShit.length;
 		}*/
@@ -105,15 +117,16 @@ class MainMenuState extends MusicBeatState
 		for (i in 0...optionShit.length)
 		{
 			var offset:Float = 108 - (Math.max(optionShit.length, 4) - 4) * 80;
-			var menuItem:FlxSprite = new FlxSprite(0, (i * 140)  + offset);
+			var menuItem:FlxSprite = new FlxSprite(0, (i * 130)  + offset);
 			menuItem.scale.x = scale;
 			menuItem.scale.y = scale;
+			menuItem.x = 3000;
+
 			menuItem.frames = Paths.getSparrowAtlas('mainmenu/menu_' + optionShit[i]);
 			menuItem.animation.addByPrefix('idle', optionShit[i] + " basic", 24);
 			menuItem.animation.addByPrefix('selected', optionShit[i] + " white", 24);
 			menuItem.animation.play('idle');
 			menuItem.ID = i;
-			menuItem.screenCenter(X);
 			menuItems.add(menuItem);
 			var scr:Float = (optionShit.length - 4) * 0.135;
 			if(optionShit.length < 6) scr = 0;
@@ -121,8 +134,25 @@ class MainMenuState extends MusicBeatState
 			menuItem.antialiasing = ClientPrefs.globalAntialiasing;
 			//menuItem.setGraphicSize(Std.int(menuItem.width * 0.58));
 			menuItem.updateHitbox();
+			menuItem.scale.set(0.8, 0.8);
+			switch(i)
+			{
+				case 0:
+					FlxTween.tween(menuItem, {x:500}, 2.4, {ease: FlxEase.expoInOut});
+				case 1:
+					FlxTween.tween(menuItem, {x:550}, 2.4, {ease: FlxEase.expoInOut});
+				case 2:
+					FlxTween.tween(menuItem, {x:600}, 2.4, {ease: FlxEase.expoInOut});
+				case 3:
+					FlxTween.tween(menuItem, {x:650}, 2.4, {ease: FlxEase.expoInOut});
+				case 4:
+					FlxTween.tween(menuItem, {x:700}, 2.4, {ease: FlxEase.expoInOut});
+				case 5:
+					FlxTween.tween(menuItem, {x:750}, 2.4, {ease: FlxEase.expoInOut});
+			}
 		}
 
+		FlxG.camera.flash(FlxColor.BLACK, 1.5);
 		FlxG.camera.follow(camFollowPos, null, 1);
 
 		var versionShit:FlxText = new FlxText(12, FlxG.height - 24, 0, "VS Lego Movie v" + CurrentVersionOfMod, 12);
@@ -249,7 +279,7 @@ class MainMenuState extends MusicBeatState
 
 		menuItems.forEach(function(spr:FlxSprite)
 		{
-			spr.screenCenter(X);
+			//spr.screenCenter(X);
 		});
 	}
 

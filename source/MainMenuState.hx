@@ -70,7 +70,7 @@ class MainMenuState extends MusicBeatState
 
 		var yScroll:Float = Math.max(0.25 - (0.05 * (optionShit.length - 4)), 0.1);
 		var bg:FlxSprite = new FlxSprite(-80).loadGraphic(Paths.image('menuBG'));
-		bg.scrollFactor.set(0, yScroll);
+		bg.scrollFactor.set();
 		bg.setGraphicSize(Std.int(bg.width * 1.175));
 		bg.updateHitbox();
 		bg.screenCenter();
@@ -80,13 +80,13 @@ class MainMenuState extends MusicBeatState
 		FlxTween.tween(bg, {x: bg.x - 1000}, 1, {ease: FlxEase.quadInOut});
 
 		var bgborder:FlxSprite = new FlxSprite(-80).loadGraphic(Paths.image('menuBGborder'));
-		bgborder.scrollFactor.set(0, yScroll);
+		bgborder.scrollFactor.set();
 		bgborder.updateHitbox();
 		bgborder.screenCenter();
 		bgborder.x = 1000;
 		bgborder.antialiasing = ClientPrefs.globalAntialiasing;
 		add(bgborder);
-		FlxTween.tween(bgborder, {x: bgborder.x - 1000}, 1.5, {ease: FlxEase.quadInOut});
+		FlxTween.tween(bgborder, {x: bgborder.x - 1000}, 1.1, {ease: FlxEase.quadInOut});
 
 
 		camFollow = new FlxObject(0, 0, 1, 1);
@@ -95,7 +95,7 @@ class MainMenuState extends MusicBeatState
 		add(camFollowPos);
 
 		magenta = new FlxSprite(-80).loadGraphic(Paths.image('menuDesat'));
-		magenta.scrollFactor.set(0, yScroll);
+		magenta.scrollFactor.set();
 		magenta.setGraphicSize(Std.int(magenta.width * 1.175));
 		magenta.updateHitbox();
 		magenta.screenCenter();
@@ -104,7 +104,7 @@ class MainMenuState extends MusicBeatState
 		magenta.color = 0xFFfd719b;
 		add(magenta);
 		
-		// magenta.scrollFactor.set();
+		magenta.scrollFactor.set();
 
 		menuItems = new FlxTypedGroup<FlxSprite>();
 		add(menuItems);

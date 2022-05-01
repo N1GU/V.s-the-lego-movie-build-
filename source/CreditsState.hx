@@ -82,9 +82,11 @@ class CreditsState extends MusicBeatState
 
 		var pisspoop:Array<Array<String>> = [ //Name - Icon name - Description - Link - BG Color
 			['VS The Lego Movie Team'],
-			['RealMushy',		'',		'Director // Musician',							'https://twitter.com/RealMushyRoblox',	'444444'],
-			['JackStar09',		'',		'Director',							'https://twitter.com/Jackstar_09',	'444444'],
-			['Aaron R',		'',		'Programmer',							'https://twitter.com/voxov_tired',	'444444'],
+			['RealMushy',		'mushy',		'Director // Musician',							'https://twitter.com/RealMushyRoblox',	'444444'],
+			['JackStar09',		'jackstar',		'Director',							'https://twitter.com/Jackstar_09',	'444444'],
+			['Aaron R',		'aaron',		'Programmer',							'https://twitter.com/voxov_tired',	'444444'],
+			['N1GU/ez',		'sonic',		'Programmer',							'',	'444444'],
+			['Minty',		'',		'Artist',							'https://www.instagram.com/mintyteai/',	'444444'],
 			// Add the rest here, I'm too lazy
 			['Psych Engine Team'],
 			['Shadow Mario',		'shadowmario',		'Main Programmer of Psych Engine',							'https://twitter.com/Shadow_Mario_',	'444444'],

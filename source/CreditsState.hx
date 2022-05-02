@@ -82,10 +82,10 @@ class CreditsState extends MusicBeatState
 
 		var pisspoop:Array<Array<String>> = [ //Name - Icon name - Description - Link - BG Color
 			['VS The Lego Movie Team'],
-			['RealMushy',		'mushy',		'Director // Musician',							'https://twitter.com/RealMushyRoblox',	'444444'],
-			['JackStar09',		'jackstar',		'Director',							'https://twitter.com/Jackstar_09',	'444444'],
-			['Aaron R',		'aaron',		'Programmer',							'https://twitter.com/voxov_tired',	'444444'],
-			['N1GU/ez',		'sonic',		'Programmer',							'',	'444444'],
+			['RealMushy',		'mushy',		'Director // Musician',							'https://twitter.com/RealMushyRoblox',	'b3142e'],
+			['JackStar09',		'jackstar',		'Director',							'https://twitter.com/Jackstar_09',	'e0cf4a'],
+			['Aaron R',		'aaron',		'Programmer',							'https://twitter.com/voxov_tired',	'262026'],
+			['N1GU/ez',		'sonic',		'Programmer',							'',	'316fcc'],
 			['Minty',		'',		'Artist',							'https://www.instagram.com/mintyteai/',	'444444'],
 			// Add the rest here, I'm too lazy
 			['Psych Engine Team'],
@@ -255,7 +255,7 @@ class CreditsState extends MusicBeatState
 				colorTween.cancel();
 			}
 			intendedColor = newColor;
-			colorTween = FlxTween.color(bg, 1, bg.color, intendedColor, {
+			colorTween = FlxTween.color(bg, 0.5, bg.color, intendedColor, {
 				onComplete: function(twn:FlxTween) {
 					colorTween = null;
 				}
@@ -278,10 +278,10 @@ class CreditsState extends MusicBeatState
 		}
 
 		descText.text = creditsStuff[curSelected][2];
-		descText.y = FlxG.height - descText.height + offsetThing - 60;
+		descText.y = FlxG.height - descText.height + offsetThing + 80;
 
 		if(moveTween != null) moveTween.cancel();
-		moveTween = FlxTween.tween(descText, {y : descText.y + 75}, 0.25, {ease: FlxEase.sineOut});
+		moveTween = FlxTween.tween(descText, {y : descText.y - 95}, 0.25, {ease: FlxEase.expoInOut});
 
 		descBox.setGraphicSize(Std.int(descText.width + 20), Std.int(descText.height + 25));
 		descBox.updateHitbox();

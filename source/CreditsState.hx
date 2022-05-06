@@ -87,6 +87,11 @@ class CreditsState extends MusicBeatState
 			['Aaron R',		'aaron',		'Programmer',							'https://twitter.com/voxov_tired',	'262026'],
 			['N1GU/ez',		'sonic',		'Programmer',							'',	'316fcc'],
 			['Minty',		'minty',		'Artist',							'https://www.instagram.com/mintyteai/',	'aaf0d1'],
+			['Sam',			'sam',			'Charter',							'',	'262026'],
+			['heyimglo',	'', 			'Artist',							'',		'FFC0CB'],
+			['saku',	'', 			'Charter',							'',		'6a0dad'],
+			['MrDaBuilder',	'', 			'Musician',							'',		'FFFFFF'],
+
 			// Add the rest here, I'm too lazy
 			['Psych Engine Team'],
 			['Shadow Mario',		'shadowmario',		'Main Programmer of Psych Engine',							'https://twitter.com/Shadow_Mario_',	'444444'],

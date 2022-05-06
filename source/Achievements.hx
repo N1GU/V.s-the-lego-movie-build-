@@ -11,7 +11,7 @@ using StringTools;
 
 class Achievements {
 	public static var achievementsStuff:Array<Dynamic> = [ //Name, Description, Achievement save tag, Hidden achievement
-		["Playing with legos",	"Played the VS Lego Movie Mod!",						'friday_night_play',	 true],
+		["Playing with legos",	"Played the VS Lego Movie Mod!",						'lego_fun_time',	 true],
 		["Everything is Awesome!",		"Beat Week 1 on Hard with no Misses.",				'week1_nomiss',			false],
 	];
 	public static var achievementsMap:Map<String, Bool> = new Map<String, Bool>();

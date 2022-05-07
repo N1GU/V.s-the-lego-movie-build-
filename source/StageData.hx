@@ -52,7 +52,7 @@ class StageData {
 				case 'thorns':
 					stage = 'schoolEvil';
 				default:
-					stage = 'stage';
+					stage = 'morning';
 			}
 		} else {
 			stage = 'stage';

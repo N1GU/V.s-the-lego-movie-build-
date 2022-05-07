@@ -20,6 +20,7 @@ import lime.app.Application;
 import Achievements;
 import editors.MasterEditorMenu;
 import flixel.input.keyboard.FlxKey;
+import flixel.addons.display.FlxBackdrop;
 import Achievements;
 
 using StringTools;
@@ -32,7 +33,7 @@ class MainMenuState extends MusicBeatState
 	var menuItems:FlxTypedGroup<FlxSprite>;
 	private var camGame:FlxCamera;
 	private var camAchievement:FlxCamera;
-	
+
 	var optionShit:Array<String> = [
 		'story_mode',
 		'freeplay',
@@ -42,17 +43,19 @@ class MainMenuState extends MusicBeatState
 	];
 
 	var magenta:FlxSprite;
+	var bg:FlxSprite;
+	var charadd:FlxSprite;
+	var bgborder:FlxSprite;
 	var camFollow:FlxObject;
 	var camFollowPos:FlxObject;
 	var debugKeys:Array<FlxKey>;
 	override function create()
 	{
-		WeekData.loadTheFirstEnabledMod();
-
 		#if desktop
 		// Updating Discord Rich Presence
 		DiscordClient.changePresence("Inside of the VS Lego Movie Menus", null);
 		#end
+		WeekData.setDirectoryFromWeek();
 		debugKeys = ClientPrefs.copyKey(ClientPrefs.keyBinds.get('debug_1'));
 
 		camGame = new FlxCamera();
@@ -78,6 +81,16 @@ class MainMenuState extends MusicBeatState
 		bg.antialiasing = ClientPrefs.globalAntialiasing;
 		add(bg);
 		FlxTween.tween(bg, {x: bg.x - 1000}, 1, {ease: FlxEase.quadInOut});
+
+		var charadd:FlxSprite = new FlxSprite(1000, 150);
+		charadd.scrollFactor.set();
+		charadd.updateHitbox();
+		charadd.antialiasing = ClientPrefs.globalAntialiasing;
+		charadd.frames = Paths.getSparrowAtlas('gfDanceTitle');
+		charadd.animation.addByIndices('danceLeft', 'gfDance', [30, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14], "", 24, false);
+		charadd.animation.addByIndices('danceRight', 'gfDance', [15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29], "", 24, false);
+		add(charadd);
+		FlxTween.tween(charadd, {x: charadd.x - 1000}, 1.04, {ease: FlxEase.quadInOut});
 
 		var bgborder:FlxSprite = new FlxSprite(-80).loadGraphic(Paths.image('menuBGborder'));
 		bgborder.scrollFactor.set();
@@ -109,7 +122,7 @@ class MainMenuState extends MusicBeatState
 		menuItems = new FlxTypedGroup<FlxSprite>();
 		add(menuItems);
 
-		var scale:Float = 0.4;
+		var scale:Float = 0.6;
 		/*if(optionShit.length > 6) {
 			scale = 6 / optionShit.length;
 		}*/
@@ -221,18 +234,25 @@ class MainMenuState extends MusicBeatState
 
 			if (controls.ACCEPT)
 			{
+				if (optionShit[curSelected] == 'donate')
+				{
+					CoolUtil.browserLoad('https://ninja-muffin24.itch.io/funkin');
+				}
+				else
 				{
 					selectedSomethin = true;
 					FlxG.sound.play(Paths.sound('confirmMenu'));
-
-					if(ClientPrefs.flashing) FlxFlicker.flicker(magenta, 1.1, 0.15, false);
+					FlxG.camera.flash(FlxColor.WHITE, 1);
 
 					menuItems.forEach(function(spr:FlxSprite)
 					{
 						if (curSelected != spr.ID)
 						{
-							FlxTween.tween(spr, {alpha: 0}, 0.4, {
-								ease: FlxEase.quadOut,
+							FlxTween.tween(spr, {x: spr.x + 1500}, 2, {
+								ease: FlxEase.quadInOut,								
+							});
+							FlxTween.tween(spr, {alpha: 0}, 3.2, {
+								ease: FlxEase.expoInOut,
 								onComplete: function(twn:FlxTween)
 								{
 									spr.kill();
